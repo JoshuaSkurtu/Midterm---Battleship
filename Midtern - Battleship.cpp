@@ -1,13 +1,15 @@
 // Midtern - Battleship.cpp : Defines the entry point for the console application.
 //
-//NEED TO CHANGE mp3s to wav
+
 #include "stdafx.h"
 
 #include <cstdlib>
 #include <iostream>
 #include <iomanip>
-#include <Windows.h>
-#include <MMsystem.h>
+#include <Windows.h> //adds windows header for sound access to windows
+#include <MMsystem.h>// adds windows media system, 
+					//but to play .wav files I had to add the windows media library 
+					//"Winmm.lib" to the linkers in project settings
 
 using namespace std;
 
@@ -352,7 +354,7 @@ finished = 0;
                  value = board[row-1][col-1];
                
        if(bombsDropped[row-1][col-1] == 2)
-		   cout<< "You already bombed this location. Please stop wasting expensive ammunition.\n The United States thanks you for your cooperation.";
+		   cout<< " You already bombed this location. Please stop wasting expensive ammunition.\n The United States thanks you for your cooperation.";
 	   else{//big else
 		   bombsDropped[row-1][col-1] = 2;
    
@@ -360,6 +362,7 @@ finished = 0;
     
          if (value == 1)
                {
+				   PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
 				   PlaySound(TEXT("splash.WAV"), NULL,  SND_FILENAME);
 				
                cout << "The coordinate you picked was a miss. Please try again. ";
@@ -369,7 +372,8 @@ finished = 0;
          
          else if (value == 2)
                  {
-					 PlaySound(TEXT("explosion.mp3"), NULL,  SND_FILENAME);
+					 PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
+					 PlaySound(TEXT("explosion.wav"), NULL,  SND_FILENAME);
                  cout << ">>You have hit ship 1. ";
               
                  tries++;
@@ -395,7 +399,9 @@ finished = 0;
     
          else if (value == 3)
          {
-			 PlaySound(TEXT("explosion.mp3"), NULL,  SND_FILENAME);
+			  PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
+					 PlaySound(TEXT("explosion.wav"), NULL,  SND_FILENAME);
+			 
               cout << ">>You have hit ship 2. ";  
               
               tries++;            
@@ -421,7 +427,8 @@ finished = 0;
     
         else if (value == 4)
         { 
-			PlaySound(TEXT("explosion02.mp3"), NULL,  SND_FILENAME);
+			 PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
+					 PlaySound(TEXT("explosion.wav"), NULL,  SND_FILENAME);
                cout << ">>You have hit ship 3. ";  
               
                tries++;
@@ -503,10 +510,10 @@ void ping(int board[][4]){
                  value = board[row-1][col-1];
 				 if(value >1 && value <5)
 					 {
-					 cout<< "Your radar has located an enemy ship in this location!"<< endl;}
+					 cout<< endl<<endl<<"Your radar has located an enemy ship in this location!"<< endl;}
 				 else
 				 {
-				 cout << "Your radar did not return any objects in that location."<<endl;
+				 cout << endl<<endl<< "Your radar did not return any objects in that location."<<endl;
 				 }
 					 finished = 1;
 	   }
