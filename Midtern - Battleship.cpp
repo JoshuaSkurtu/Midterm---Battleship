@@ -2,6 +2,7 @@
 //
 
 #include "stdafx.h"
+	
 
 #include <cstdlib>
 #include <iostream>
@@ -134,11 +135,11 @@ do //BOAT NUMBER 1, 2 SPACES
 		{
 			case 1: //horizontal{
 					{
-				if(tempCol !=5 && board[tempRow][tempCol+1]==1)
+				if(tempCol !=3 && board[tempRow][tempCol+1]==1)
 					{
 					board[tempRow][tempCol] = 2;
 					board[tempRow][tempCol+1] = 2;
-
+					
 					finished = 1;
 					break;
 					}
@@ -147,6 +148,7 @@ do //BOAT NUMBER 1, 2 SPACES
 					board[tempRow][tempCol] = 2;
 					board[tempRow][tempCol-1] = 2;
 					finished = 1;
+					
 					break;	
 					}
 				else
@@ -154,11 +156,11 @@ do //BOAT NUMBER 1, 2 SPACES
 					};
 			case 2:				//vertical
 				{
-				if(tempRow !=3 && board[tempRow+1][tempCol]==1)
+				if(tempRow !=5 && board[tempRow+1][tempCol]==1)
 					{
 					board[tempRow][tempCol] = 2;
 					board[tempRow+1][tempCol] = 2;
-
+					
 					finished = 1;
 					break;
 					}
@@ -167,6 +169,7 @@ do //BOAT NUMBER 1, 2 SPACES
 					board[tempRow][tempCol] = 2;
 					board[tempRow-1][tempCol] = 2;
 					finished = 1;
+					
 					break;
 					}
 				else 
@@ -192,13 +195,14 @@ do //BOAT NUMBER 2, 3 SPACES
 		{
 			case 1: //horizontal{
 					{
-				if(tempCol !=5 && tempCol != 4 && board[tempRow][tempCol+1]==1 && board[tempRow][tempCol+2]==1)
+				if(tempCol !=3 && tempCol != 2 && board[tempRow][tempCol+1]==1 && board[tempRow][tempCol+2]==1)
 					{
 					board[tempRow][tempCol] = 3;
 					board[tempRow][tempCol+1] = 3;
 					board[tempRow][tempCol+2] = 3;
 
 					finished = 1;
+					
 					break;
 					}
 				else if(tempCol !=0 && tempCol != 1 && board[tempRow][tempCol-1]==1 &&board[tempRow][tempCol-2] == 1)
@@ -207,6 +211,7 @@ do //BOAT NUMBER 2, 3 SPACES
 					board[tempRow][tempCol-1] = 3;
 					board[tempRow][tempCol-2] = 3;
 					finished = 1;
+					
 					break;	
 					}
 				else
@@ -214,12 +219,12 @@ do //BOAT NUMBER 2, 3 SPACES
 					}
 			case 2:				//vertical
 				{
-				if(tempRow !=3 && tempRow != 2 && board[tempRow+1][tempCol]==1 && board[tempRow+2][tempCol] ==1)
+				if(tempRow !=5 && tempRow != 4 && board[tempRow+1][tempCol]==1 && board[tempRow+2][tempCol] ==1)
 					{
 					board[tempRow][tempCol] = 3;
 					board[tempRow+1][tempCol] = 3;
 					board[tempRow+2][tempCol] = 3;
-
+					
 					finished = 1;
 					break;
 					}
@@ -228,7 +233,6 @@ do //BOAT NUMBER 2, 3 SPACES
 					board[tempRow][tempCol] = 3;
 					board[tempRow-1][tempCol] = 3;
 					board[tempRow-2][tempCol] = 3;
-
 					finished = 1;
 					break;
 					}
@@ -257,24 +261,23 @@ do //BOAT NUMBER 3, 4 SPACES
 		{
 			case 1: //horizontal{
 					{
-				if(tempCol < 3 && board[tempRow][tempCol+1]==1 && board[tempRow][tempCol+2]==1 && board[tempRow][tempCol+3] == 1)
+				if(tempCol == 0 && board[tempRow][tempCol+1]==1 && board[tempRow][tempCol+2]==1 && board[tempRow][tempCol+3] == 1)
 					{
 					board[tempRow][tempCol] = 4;
 					board[tempRow][tempCol+1] = 4;
 					board[tempRow][tempCol+2] = 4;
 					board[tempRow][tempCol+3] = 4;
 					finished = 1;
-
 					break;
 					}
-				else if(tempCol > 3 && board[tempRow][tempCol-1]==1 && board[tempRow][tempCol-2]==1 && board[tempRow][tempCol-3] ==1)
+				else if(tempCol == 3 && board[tempRow][tempCol-1]==1 && board[tempRow][tempCol-2]==1 && board[tempRow][tempCol-3] ==1)
 					{
 					board[tempRow][tempCol] = 4;
 					board[tempRow][tempCol-1] = 4;
 					board[tempRow][tempCol-2] = 4;
 					board[tempRow][tempCol-3] = 4;
 					finished = 1;
-
+					
 					break;	
 					}
 				else
@@ -282,22 +285,23 @@ do //BOAT NUMBER 3, 4 SPACES
 					}
 			case 2:				//vertical
 				{
-				if(tempRow == 0 && board[tempRow+1][tempCol]==1 && board[tempRow+2][tempCol]==1 && board[tempRow+3][tempCol] ==1)
+				if(tempRow < 3 && board[tempRow+1][tempCol]==1 && board[tempRow+2][tempCol]==1 && board[tempRow+3][tempCol] ==1)
 					{
 					board[tempRow][tempCol] = 4;
 					board[tempRow+1][tempCol] = 4;
 					board[tempRow+2][tempCol] = 4;
 					board[tempRow+3][tempCol] = 4;
 					finished = 1;
+					
 					break;
 					}
-				else if(tempRow == 3 && board[tempRow-1][tempCol]==1 && board[tempRow-2][tempCol]==1 && board[tempRow-3][tempCol] ==1)
+				else if(tempRow > 2 && board[tempRow-1][tempCol]==1 && board[tempRow-2][tempCol]==1 && board[tempRow-3][tempCol] ==1)
 					{
 					board[tempRow][tempCol] = 4;
 					board[tempRow-1][tempCol] = 4;
 					board[tempRow-2][tempCol] = 4;
 					board[tempRow-3][tempCol] = 4;
-
+					
 					finished = 1;
 					break;
 					}
@@ -374,6 +378,15 @@ finished = 0;
                  {
 					 PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
 					 PlaySound(TEXT("explosion.wav"), NULL,  SND_FILENAME);
+			    cout <<endl<<" _________"<<endl;
+					 cout <<"|_________|"<<endl;
+					 cout <<"  \\|||||/ "<<endl;
+					 cout <<"   |   | "<<endl;
+					 cout <<"  /     \\  "<<endl;
+					 cout <<" /       \\  "<<endl;
+					 cout <<" |       |   "<<endl;
+					 cout <<"  \\     /     "<<endl;
+					 cout <<"    ---     "<<endl<<endl;
                  cout << ">>You have hit ship 1. ";
               
                  tries++;
@@ -384,6 +397,7 @@ finished = 0;
               
               if (hitA == 2)
               {
+				   
                        cout << ">>You have sunk ship 1!<<";
                        hitA = 0;
                        sunk++;
@@ -402,6 +416,15 @@ finished = 0;
 			  PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
 					 PlaySound(TEXT("explosion.wav"), NULL,  SND_FILENAME);
 			 
+					 cout <<endl<<" _________"<<endl;
+					 cout <<"|_________|"<<endl;
+					 cout <<"  \\|||||/ "<<endl;
+					 cout <<"   |   | "<<endl;
+					 cout <<"  /     \\  "<<endl;
+					 cout <<" /       \\  "<<endl;
+					 cout <<" |       |   "<<endl;
+					 cout <<"  \\     /     "<<endl;
+					 cout <<"    ---     "<<endl<<endl;
               cout << ">>You have hit ship 2. ";  
               
               tries++;            
@@ -429,7 +452,16 @@ finished = 0;
         { 
 			 PlaySound(TEXT("falling.WAV"), NULL,  SND_FILENAME);
 					 PlaySound(TEXT("explosion.wav"), NULL,  SND_FILENAME);
-               cout << ">>You have hit ship 3. ";  
+              cout <<endl<<" _________"<<endl;
+					 cout <<"|_________|"<<endl;
+					 cout <<"  \\|||||/ "<<endl;
+					 cout <<"   |   | "<<endl;
+					 cout <<"  /     \\  "<<endl;
+					 cout <<" /       \\  "<<endl;
+					 cout <<" |       |   "<<endl;
+					 cout <<"  \\     /     "<<endl;
+					 cout <<"    ---     "<<endl<<endl;
+					 cout << ">>You have hit ship 3. ";  
               
                tries++;
                hitC++;
